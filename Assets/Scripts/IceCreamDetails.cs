@@ -19,6 +19,7 @@ public class IceCreamDetails : MonoBehaviour
 
     public float moveSpeed = 5.0f;
     public float scoopOffset = 0.5f;
+    public float coneOffset = 1.0f;
 
     public Material chocolateMaterial;
     public Material mintMaterial;
@@ -39,17 +40,17 @@ public class IceCreamDetails : MonoBehaviour
         Transform parent = this.transform;
         GameObject scoop;
 
-        foreach (Flavors flavor in Scoops)
+        for (int i = 0; i < Scoops.Count; ++i)
         {
             scoop = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             scoop.GetComponent<Collider>().enabled = false;
             scoop.GetComponent<MeshFilter>().mesh = scoopMesh;
-            scoop.transform.position = new Vector3(parent.position.x, parent.position.y, parent.position.z + scoopOffset);
+            scoop.transform.position = new Vector3(parent.position.x, parent.position.y, parent.position.z + ((i == 0) ? coneOffset : scoopOffset));
             scoop.transform.SetParent(parent);
             parent = scoop.transform;
 
             Renderer scoopMaterial = scoop.GetComponent<Renderer>();
-            switch (flavor)
+            switch (Scoops[i])
             {
                 case Flavors.Chocolate:
                     scoopMaterial.material = chocolateMaterial;
