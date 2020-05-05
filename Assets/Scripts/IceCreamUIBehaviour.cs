@@ -57,6 +57,7 @@ public class IceCreamUIBehaviour : MonoBehaviour
                 Destroy(iceCreamSprites[i]);
                 iceCreamSprites.RemoveAt(i);
             }
+            Destroy(this.gameObject);
             return true;
         }
 

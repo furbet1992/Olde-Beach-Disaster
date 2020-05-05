@@ -41,7 +41,7 @@ public class PirateBehaviour : MonoBehaviour
             timer += Time.deltaTime;
             rb.AddForce(new Vector3(0, 100));
 
-            if (timer > 0.25f)
+            if (timer > 0.5f)
             {
                 Kill();
             }
