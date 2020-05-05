@@ -38,6 +38,7 @@ public class IceCreamDetails : MonoBehaviour
 
         Transform parent = this.transform;
         GameObject scoop;
+
         foreach (Flavors flavor in Scoops)
         {
             scoop = GameObject.CreatePrimitive(PrimitiveType.Sphere);
