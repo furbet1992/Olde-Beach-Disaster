@@ -16,8 +16,7 @@ public class PirateManager : MonoBehaviour
 
     public int maxPirates = 10;
 
-    public float maxPirateSpeed = 10.0f;
-    public float minPirateSpeed = 3.0f;
+    public float pirateSpeed = 1.0f;
 
     float spawnTimer = 0.0f;
 
@@ -25,7 +24,6 @@ public class PirateManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
             lanes[i] = transform.GetChild(i).gameObject;
-         
     }
 
     private void Update()
@@ -45,8 +43,7 @@ public class PirateManager : MonoBehaviour
         {
             GameObject currentPirate = Instantiate(PiratePrefab);
             pirates.Add(currentPirate);
-            currentPirate.GetComponent<PirateBehaviour>().Init(lanes[Random.Range(0, lanes.Length)], Random.Range(minPirateSpeed, maxPirateSpeed), this);
-
+            currentPirate.GetComponent<PirateBehaviour>().Init(lanes[Random.Range(0, lanes.Length)], pirateSpeed, this);
         }
     }
 

@@ -23,13 +23,15 @@ public class IceCreamUIBehaviour : MonoBehaviour
 
     public void SetIceCreams(List<Flavors> flavors)
     {
-        float width = GetComponent<RectTransform>().sizeDelta.x / 2 - 12.5f;
+        float width = GetComponent<RectTransform>().sizeDelta.x / 2;
+
         for (int i = 0; i < flavors.Count; i++)
         {
             iceCreamSprites.Add(Instantiate(iceCreamSpritePrefab));
             iceCreamSprites[i].transform.SetParent(this.transform);
             iceCreamSprites[i].GetComponent<IceCreamSpriteBehavior>().Init((int)flavors[i]);
-            iceCreamSprites[i].transform.localPosition = new Vector3(-width + i * 25, 0);
+            iceCreamSprites[i].transform.localPosition = new Vector3((-width + i * 33) + ((width) * 0.3f), 0);
+            iceCreamSprites[i].GetComponent<RectTransform>().sizeDelta = new Vector2((width) * 0.4f, GetComponent<RectTransform>().sizeDelta.y * 0.4f);
         }
     }
 
