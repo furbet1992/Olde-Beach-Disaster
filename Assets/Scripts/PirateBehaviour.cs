@@ -16,8 +16,7 @@ public class PirateBehaviour : MonoBehaviour
     public bool isDead = false;
     float timer = 0.0f;
 
-    public AudioSource DeathSound;
-    public AudioSource wrongConeSound;
+    public float flyTime = 0.5f;
 
     public void Init(GameObject lane, float speed, PirateManager manager)
     {
@@ -45,7 +44,7 @@ public class PirateBehaviour : MonoBehaviour
             timer += Time.deltaTime;
             rb.AddForce(new Vector3(0, 100));
 
-            if (timer > 0.5f)
+            if (timer > flyTime)
             {
                 Kill();
             }
@@ -125,11 +124,6 @@ public class PirateBehaviour : MonoBehaviour
             if (kill)
             {
                 isDead = true;
-                DeathSound.Play();
-            }
-            else
-            {
-                wrongConeSound.Play();
             }
 
             Destroy(iceCream.gameObject);

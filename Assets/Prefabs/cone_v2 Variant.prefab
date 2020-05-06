@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scoops: 
-  moveSpeed: 5
+  moveSpeed: 10
   scoopOffset: 0.5
   coneOffset: 1.5
   chocolateMaterial: {fileID: 2100000, guid: 6ba9deb85b2e6384abc0c629682e5bbf, type: 2}

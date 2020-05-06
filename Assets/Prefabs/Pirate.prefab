@@ -211,6 +211,7 @@ MonoBehaviour:
   isDead: 0
   DeathSound: {fileID: 0}
   wrongConeSound: {fileID: 0}
+  flyTime: 0.4
 --- !u!54 &161386247600061936
 Rigidbody:
   m_ObjectHideFlags: 0
