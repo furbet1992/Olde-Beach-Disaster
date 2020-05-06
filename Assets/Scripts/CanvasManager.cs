@@ -34,13 +34,19 @@ public class CanvasManager : MonoBehaviour
     public void ViewInstructions()
     {
         titleCanvas.SetActive(false);
+        gameCanvas.SetActive(true);
         instructionCanvas.SetActive(true);
+        gameCamera.SetActive(true);
+        titleCamera.SetActive(false);
     }
 
     public void BackToTitle()
     {
         titleCanvas.SetActive(true);
+        gameCanvas.SetActive(false);
         instructionCanvas.SetActive(false);
+        titleCamera.SetActive(true);
+        gameCamera.SetActive(false);
     }
 
     public void QuitGame()
