@@ -16,6 +16,12 @@ public class CartShoot : MonoBehaviour
     public Texture strawberryTexture;
     public Texture vanillaTexture;
 
+    public AudioSource shoot;
+    public AudioSource selectFlavor;
+    public AudioSource cancelIceCream;
+
+    bool playSelectSound = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,29 +34,40 @@ public class CartShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playSelectSound = false;
+
         if (currentIceCream.Count < maxFlavors && Input.GetKeyDown(KeyCode.A))
         {
             currentIceCream.Add(Flavors.Chocolate);
             scoopUI[currentIceCream.Count - 1].enabled = true;
             scoopUI[currentIceCream.Count - 1].texture = chocolateTexture;
+            playSelectSound = true;
         }
         if (currentIceCream.Count < maxFlavors && Input.GetKeyDown(KeyCode.S))
         {
             currentIceCream.Add(Flavors.Mint);
             scoopUI[currentIceCream.Count - 1].enabled = true;
             scoopUI[currentIceCream.Count - 1].texture = mintTexture;
+            playSelectSound = true;
         }
         if (currentIceCream.Count < maxFlavors && Input.GetKeyDown(KeyCode.D))
         {
             currentIceCream.Add(Flavors.Strawberry);
             scoopUI[currentIceCream.Count - 1].enabled = true;
             scoopUI[currentIceCream.Count - 1].texture = strawberryTexture;
+            playSelectSound = true;
         }
         if (currentIceCream.Count < maxFlavors && Input.GetKeyDown(KeyCode.F))
         {
             currentIceCream.Add(Flavors.Vanilla);
             scoopUI[currentIceCream.Count - 1].enabled = true;
             scoopUI[currentIceCream.Count - 1].texture = vanillaTexture;
+            playSelectSound = true;
+        }
+
+        if (playSelectSound)
+        {
+            selectFlavor.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -59,6 +76,7 @@ public class CartShoot : MonoBehaviour
             foreach (RawImage image in scoopUI)
             {
                 image.enabled = false;
+                cancelIceCream.Play();
             }
         }
 
@@ -71,6 +89,7 @@ public class CartShoot : MonoBehaviour
             {
                 image.enabled = false;
             }
+            shoot.Play();
         }
     }
 }

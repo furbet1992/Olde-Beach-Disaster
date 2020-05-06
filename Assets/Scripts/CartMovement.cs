@@ -19,6 +19,8 @@ public class CartMovement : MonoBehaviour
     float distanceCovered = 0;
     float fractionOfJourney = 0;
 
+    public AudioSource moveCart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class CartMovement : MonoBehaviour
             startPosition = transform.position;
             distanceCovered = 0.0f;
             journeyLength = Mathf.Abs(lanes[targetLane].transform.position.x - transform.position.x);
+            moveCart.Play();
         }
         if (currentLane < lanes.Count - 1 && targetLane != rightLane && Input.GetKey(KeyCode.RightArrow))
         {
@@ -53,6 +56,7 @@ public class CartMovement : MonoBehaviour
             startPosition = transform.position;
             distanceCovered = 0.0f;
             journeyLength = Mathf.Abs(lanes[targetLane].transform.position.x - transform.position.x);
+            moveCart.Play();
         }
 
         if (Input.GetKey(KeyCode.Escape))
