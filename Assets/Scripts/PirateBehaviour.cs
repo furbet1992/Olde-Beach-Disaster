@@ -17,6 +17,7 @@ public class PirateBehaviour : MonoBehaviour
     float timer = 0.0f;
 
     public AudioSource DeathSound;
+    public AudioSource wrongConeSound;
 
     public void Init(GameObject lane, float speed, PirateManager manager)
     {
@@ -125,6 +126,10 @@ public class PirateBehaviour : MonoBehaviour
             {
                 isDead = true;
                 DeathSound.Play();
+            }
+            else
+            {
+                wrongConeSound.Play();
             }
 
             Destroy(iceCream.gameObject);
