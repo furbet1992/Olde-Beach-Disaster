@@ -25,6 +25,8 @@ public class PirateManager : MonoBehaviour
     public int waveAmount;
     int waveIndex = 0;
 
+    public AudioSource nextWaveSound;
+
     private void Start()
     {
         for (int i = 0; i < 5; i++)
@@ -46,8 +48,8 @@ public class PirateManager : MonoBehaviour
             if (pirates.Count == 0)
             {
                 waveIndex++;
-
                 waveAmount = 5 + (waveIndex * 5);
+                nextWaveSound.Play();
             }
 
         }
@@ -70,6 +72,5 @@ public class PirateManager : MonoBehaviour
     public void PirateDied(GameObject pirate)
     {
         pirates.Remove(pirate);
-        Debug.Log(waveAmount);
     }
 }
