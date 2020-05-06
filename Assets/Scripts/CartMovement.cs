@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CartMovement : MonoBehaviour
 {
+    public GameObject gameManager;
     public List<GameObject> lanes;
     public float moveSpeed = 15.0f;
     
@@ -52,6 +53,11 @@ public class CartMovement : MonoBehaviour
             startPosition = transform.position;
             distanceCovered = 0.0f;
             journeyLength = Mathf.Abs(lanes[targetLane].transform.position.x - transform.position.x);
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            gameManager.GetComponent<GameManager>().health = 0;
         }
 
         distanceCovered = (Time.time - startTime) * moveSpeed;
